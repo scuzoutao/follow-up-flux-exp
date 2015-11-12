@@ -8,7 +8,7 @@ import DocumentTitle from 'react-document-title';
 
 import withStyles from '../../decorators/withStyles';
 import semantic_css from '../../semantic/dist/semantic.css';
-require("./App.scss");
+require('./App.scss');
 
 @withStyles(semantic_css)
 export default class App extends Component {
