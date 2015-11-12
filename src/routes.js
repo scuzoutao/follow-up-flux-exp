@@ -4,9 +4,12 @@
  */
 
 import React, { PropTypes, Component } from 'react';
-import { Router, Route } from 'react-router';
+import { Router, Route, NotFoundRoute } from 'react-router';
 
 import App from './components/App';
+import NotFoundPage from './components/Layouts/NotFoundPage';
+
+import Department from './components/Department';
 
 export default class Routes extends Component {
   static propTypes = {
@@ -17,8 +20,10 @@ export default class Routes extends Component {
     const { history } = this.props;
     return (
       <Router history={history}>
-        <Route path='/' component={App}>
+        <Route name='app' path='/' component={App}>
+          <Route name='department' path='/department' component={Department} />
         </Route>
+        <Route path="*" component={ NotFoundPage }/>
       </Router>
     );
   }
