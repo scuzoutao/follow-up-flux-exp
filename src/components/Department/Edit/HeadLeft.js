@@ -5,8 +5,6 @@
 
 import React, { Component, PropTypes} from 'react';
 
-import Edit from './Edit'
-
 export default class HeadLeft extends Component {
 
   static propTypes = {

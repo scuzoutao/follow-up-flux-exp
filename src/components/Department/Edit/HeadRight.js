@@ -4,6 +4,7 @@
  */
 
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 export default class HeadRight extends Component {
 
@@ -18,7 +19,7 @@ export default class HeadRight extends Component {
           <i className="trash icon"></i>
           删除
         </div>
-        <a className="ui small button" href="/departments/15">取消</a>
+        <Link className="ui small button" to="/departments/15">取消</Link>
       </div>
     );
   }

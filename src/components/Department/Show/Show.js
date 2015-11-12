@@ -13,7 +13,11 @@ export default class Show extends Component {
       <DocumentTitle title='科室'>
         <div className="component show">
           <div className="wrap">
-            show
+            <div className="ui page grid">
+              <div className="sixteen wide column">
+                show
+              </div>
+            </div>
           </div>
         </div>
       </DocumentTitle>

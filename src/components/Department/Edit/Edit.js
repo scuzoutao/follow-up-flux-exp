@@ -6,8 +6,7 @@
 import React, { Component } from 'react';
 import DocumentTitle from 'react-document-title';
 
-import HeadLeft from './HeadLeft'
-import HeadRight from './HeadRight'
+import Head from './Head'
 import Tab from './Tab'
 import TabBasic from './TabBasic'
 import TabDoctor from './TabDoctor'
@@ -24,10 +23,7 @@ export default class Edit extends Component {
           <div className="wrap">
             <div className="ui page grid">
               <div className="sixteen wide column">
-                <HeadLeft department={{name : '泌尿外科'}}/>
-                <HeadRight />
-                <div className="clear-both"></div>
-                <div className="description">测试</div>
+                <Head />
                 <Tab />
                 <TabBasic />
                 <TabDoctor />
