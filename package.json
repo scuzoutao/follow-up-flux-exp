@@ -7,6 +7,7 @@
     "history": "^1.8.4",
     "humps": "1.0.0",
     "invariant": "^2.0.0",
+    "jquery": "^2.1.4",
     "keymirror": "^0.1.1",
     "normalizr": "^1.4.0",
     "react": "^0.14.2",
