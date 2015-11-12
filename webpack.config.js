@@ -23,9 +23,28 @@ module.exports = {
   ],
   module: {
     loaders: [{
-      test: /\.jsx?$/,
-      loader: 'babel-loader',
-      include: path.join(__dirname, 'src')
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        include: path.join(__dirname, 'src')
+      }, {
+        test: /\.css$/,
+        loader: 'style-loader/useable!css-loader!postcss-loader',
+      },
+      {
+        test: /\.scss$/,
+        loader: 'style!css!sass'
+      }, {
+        test: /\.json$/,
+        loader: 'json-loader',
+      }, {
+        test: /\.txt$/,
+        loader: 'raw-loader',
+      }, {
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+        loader: 'url-loader?limit=10000',
+      }, {
+        test: /\.(eot|ttf|wav|mp3)$/,
+        loader: 'file-loader',
     }]
   }
 };
