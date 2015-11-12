@@ -2,3 +2,18 @@
  * Follow-up System Web Frontend (https://github.com/mdluo/follow-up-flux)
  * (C) 2015 Mingdong Luo (https://github.com/mdluo) | MIT License
  */
+
+.component.department {
+
+  .component.edit {
+
+    .ui.header > .icon {
+      display: inline;
+    }
+
+    .description {
+      margin-top: 14px;
+      line-height: 24px;
+    }
+  }
+}

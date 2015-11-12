@@ -6,9 +6,16 @@
 import React, { Component } from 'react';
 import DocumentTitle from 'react-document-title';
 
-require("./Edit.scss");
+import HeadLeft from './HeadLeft'
+import HeadRight from './HeadRight'
+import Tab from './Tab'
+import TabBasic from './TabBasic'
+import TabDoctor from './TabDoctor'
+import TabAdmin from './TabAdmin'
 
-class Edit extends Component {
+require('./Edit.scss')
+
+export default class Edit extends Component {
 
   render() {
     return (
@@ -17,24 +24,14 @@ class Edit extends Component {
           <div className="wrap">
             <div className="ui page grid">
               <div className="sixteen wide column">
-                <div className="float-left column">
-                  <h2 className="ui header title">
-                    <i className="small edit icon" style={{display: 'inline'}}></i>
-                    编辑科室：泌尿外科
-                  </h2>
-                </div>
-                <div className="float-right column">
-                  <div className="ui primary small button">
-                    <i className="save icon"></i>
-                    保存
-                  </div>
-                  <div className="ui red small button">
-                    <i className="trash icon"></i>
-                    删除
-                  </div>
-                  <a className="ui small button" href="/departments/15">取消
-                  </a>
-                </div>
+                <HeadLeft department={{name : '泌尿外科'}}/>
+                <HeadRight />
+                <div className="clear-both"></div>
+                <div className="description">测试</div>
+                <Tab />
+                <TabBasic />
+                <TabDoctor />
+                <TabAdmin />
               </div>
             </div>
           </div>
@@ -44,5 +41,3 @@ class Edit extends Component {
   }
 
 }
-
-export default Edit;

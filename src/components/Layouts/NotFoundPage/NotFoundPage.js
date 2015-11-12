@@ -2,6 +2,7 @@
 
 import React, { PropTypes, Component } from 'react';
 import { RouteHandler } from 'react-router';
+import DocumentTitle from 'react-document-title';
 
 import withStyles from '../../../decorators/withStyles';
 import styles from './NotFoundPage.css';
@@ -11,9 +12,11 @@ class NotFoundPage extends Component {
 
   render() {
     return (
-      <div>
-        <p>Sorry, but the page you were trying to view does not exist.</p>
-      </div>
+      <DocumentTitle title='404-Page Not Found'>
+        <div>
+          <p>Sorry, but the page you were trying to view does not exist.</p>
+        </div>
+      </DocumentTitle>
     );
   }
 

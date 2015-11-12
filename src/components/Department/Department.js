@@ -9,18 +9,16 @@ import Header from '../Layouts/Header';
 import Navigation from '../Layouts/Navigation';
 import Edit from './Edit';
 
-class Department extends Component {
+export default class Department extends Component {
 
   render() {
     return (
-      <div className="component dapartment">
+      <div className="component department">
         <Header />
         <Navigation />
-        <Edit />
+        {this.props.children}
       </div>
     );
   }
 
 }
-
-export default Department;
