@@ -6,6 +6,11 @@
 import React, { PropTypes, Component } from 'react';
 import DocumentTitle from 'react-document-title';
 
+import withStyles from '../../decorators/withStyles';
+import semantic_css from '../../semantic/dist/semantic.css';
+require("./App.scss");
+
+@withStyles(semantic_css)
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.object
@@ -13,11 +18,9 @@ export default class App extends Component {
 
   render() {
     return (
-      <DocumentTitle title='Sample App'>
-        <div className='App'>
-          {this.props.children}
-        </div>
-      </DocumentTitle>
+      <div className='component app'>
+        {this.props.children}
+      </div>
     );
   }
 }
