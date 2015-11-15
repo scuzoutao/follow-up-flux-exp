@@ -17,7 +17,6 @@ const DepartmentStore = createStore({
 DepartmentStore.dispatchToken = register(action => {
   const responseDepartment = action.response;
   if (responseDepartment) {
-    //mergeIntoBag(_department, responseDepartment);
     _department = responseDepartment;
     DepartmentStore.emitChange();
   }

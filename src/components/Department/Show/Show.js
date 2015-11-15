@@ -11,14 +11,25 @@ import * as DepartmentActionCreators from '../../../actions/Department/Departmen
 import DepartmentStore from '../../../stores/Department/DepartmentStore';
 import connectToStores from '../../../decorators/connectToStores';
 
+var output;
+
+function parseId(params) {
+  return parseInt(params.id);
+}
+
 function requestData(props) {
-  const id = props.params.id;
-  DepartmentActionCreators.requestDepartment(id, ['name', 'description']);
+  const { params } = props;
+  const DepartmentId = parseId(params);
+  DepartmentActionCreators.requestDepartment(DepartmentId, ['name', 'description']);
 }
 
 function getState(props) {
-  const id = props.params.id;
+  const id = parseId(props.params);
   const department = DepartmentStore.get();
+  if (id !== department.id) {
+    return {};
+  }
+  output = <h1>{department.name}</h1>;
   return { department };
 }
 
@@ -36,11 +47,13 @@ export default class Show extends Component{
   };
 
   componentWillMount() {
+    output = <h1>Loading...</h1>
     requestData(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.params.id !== this.props.params.id) {
+      output = <h1>Loading...</h1>
       requestData(nextProps);
     }
   }
@@ -48,6 +61,9 @@ export default class Show extends Component{
   render() {
     const { department, params } = this.props;
     const id = params.id;
+    console.log('=======RENDER Start=======');
+    console.log(department);
+    console.log('=======RENDER End=======');
 
     return (
       <DocumentTitle title='科室'>
@@ -55,10 +71,8 @@ export default class Show extends Component{
           <div className="wrap">
             <div className="ui page grid">
               <div className="sixteen wide column">
-                {department ?
-                  department.name :
-                  <h1>Loading...</h1>
-                }
+                { output }
+                <Link to="/departments/15">15</Link>
                 <Link to="/departments/16">16</Link>
               </div>
             </div>
