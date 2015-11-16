@@ -8,3 +8,7 @@ import { fetchJSON } from '../utils/APIUtils';
 export function getDepartment(id, url = `/departments/${id}`) {
   return fetchJSON(url);
 }
+
+export function getDoctors(id, url = `/departments/${id}/edit`) {
+  return fetchJSON(url);
+}

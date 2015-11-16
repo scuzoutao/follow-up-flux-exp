@@ -5,15 +5,12 @@
 
 .component.department {
 
-  .component.edit {
+  .ui.header > .icon {
+    display: inline;
+  }
 
-    .ui.header > .icon {
-      display: inline;
-    }
-
-    .description {
-      margin-top: 14px;
-      line-height: 24px;
-    }
+  .description {
+    margin-top: 14px;
+    line-height: 24px;
   }
 }

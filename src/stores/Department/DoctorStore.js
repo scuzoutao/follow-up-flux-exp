@@ -3,10 +3,29 @@
  * (C) 2015 Mingdong Luo (https://github.com/mdluo) | MIT License
  */
 
-import { createStore, mergeIntoBag, isInBag } from '../../utils/StoreUtils';
+import assign from 'object-assign';
 
-const _doctors = {};
+import { register, waitFor } from '../../dispatcher/AppDispatcher';
+import { createStore } from '../../utils/StoreUtils';
+import DepartmentStore from './DepartmentStore';
 
-export default const DoctorStore = createStore({
+const _doctors = [];
 
+const DoctorStore = createStore({
+  get() {
+    return _doctors;
+  }
 });
+
+DoctorStore.dispatchToken = register(action => {
+  waitFor([DepartmentStore.dispatchToken]);
+  if (action.type == 'REQUEST_DOCTOR_SUCCESS') {
+    const responseDoctors = action.response;
+    if (responseDoctors) {
+      assign(_doctors, responseDoctors);
+      DoctorStore.emitChange();
+    }
+  }
+});
+
+export default DoctorStore;

@@ -3,22 +3,26 @@
  * (C) 2015 Mingdong Luo (https://github.com/mdluo) | MIT License
  */
 
-import { register } from '../../dispatcher/AppDispatcher';
-import { createStore, mergeIntoBag, isInBag } from '../../utils/StoreUtils';
+import assign from 'object-assign';
 
-var _department = {};
+import { register } from '../../dispatcher/AppDispatcher';
+import { createStore } from '../../utils/StoreUtils';
+
+const _department = {};
 
 const DepartmentStore = createStore({
-  get() {
+  get(departmentID) {
     return _department;
   }
 });
 
 DepartmentStore.dispatchToken = register(action => {
-  const responseDepartment = action.response;
-  if (responseDepartment) {
-    _department = responseDepartment;
-    DepartmentStore.emitChange();
+  if (action.type == 'REQUEST_DEPARTMENT_SUCCESS') {
+    const responseDepartment = action.response;
+    if (responseDepartment) {
+      assign(_department, responseDepartment);
+      DepartmentStore.emitChange();
+    }
   }
 });
 

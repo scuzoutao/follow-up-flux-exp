@@ -8,9 +8,20 @@ import React, { Component } from 'react';
 import TabDoctorTableTr from './TabDoctorTableTr'
 import TabDoctorTableTfoot from './TabDoctorTableTfoot'
 
+function onAddNew() {
+
+}
+
 export default class TabDoctorTable extends Component {
 
+  componentDidMount() {
+    $('.ui.checkbox').checkbox();
+  }
+
   render() {
+
+    const { doctors } = this.props;
+
     return (
       <table className="ui compact unstackable selectable celled striped definition table" id="doctors_table">
         <thead className="full-width">
@@ -25,7 +36,9 @@ export default class TabDoctorTable extends Component {
           </tr>
         </thead>
         <tbody>
-          <TabDoctorTableTr />
+          {doctors.map(function(doctor){
+            return <TabDoctorTableTr key={doctor.id} doctor={doctor}/>;
+          })}
         </tbody>
         <TabDoctorTableTfoot />
       </table>

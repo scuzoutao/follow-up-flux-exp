@@ -13,7 +13,7 @@ export default class TabDoctor extends Component {
     return (
       <div className="ui tab" data-tab="doctor">
         <div className="ui hidden divider"></div>
-        <TabDoctorTable />
+        <TabDoctorTable {...this.props}/>
       </div>
     );
   }

@@ -20,7 +20,7 @@ export default class TabDoctorTableTfoot extends Component {
               <i className="trash icon"></i>
               移除全部
             </div>
-            <div className="ui right floated small green basic button">
+            <div className="ui right floated small green basic button" onClick="">
               <i className="chevron down icon"></i>
               新增一行
             </div>

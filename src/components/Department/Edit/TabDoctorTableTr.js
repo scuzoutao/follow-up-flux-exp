@@ -8,22 +8,25 @@ import React, { Component } from 'react';
 export default class TabDoctorTableTr extends Component {
 
   render() {
+
+    const { doctor } = this.props;
+
     return (
       <tr>
         <td className="collapsing">
           <div className="ui fitted checkbox">
-            <input type="checkbox" tabIndex="0" className="hidden" />
+            <input type="checkbox"/>
           </div>
         </td>
-        <td rowSpan="3">组长甲</td>
-        <td>组长甲</td>
+        <td rowSpan="0">{doctor.name}</td>
+        <td>{doctor.name}</td>
         <td></td>
         <td></td>
-        <td>18200000001</td>
+        <td>{doctor.mobile}</td>
         <td className="center aligned">
           未发送 (<a href="#">发送</a>)
         </td>
       </tr>
-    );
+    )
   }
 }
