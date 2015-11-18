@@ -23,7 +23,7 @@ export default class TabDoctorTable extends Component {
     const { doctors } = this.props;
 
     return (
-      <table className="ui compact unstackable selectable celled striped definition table" id="doctors_table">
+      <table className="ui small unstackable selectable celled striped definition table" id="doctors_table">
         <thead className="full-width">
           <tr>
             <th></th>

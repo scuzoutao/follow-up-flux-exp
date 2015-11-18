@@ -20,8 +20,8 @@ export default class TabDoctorTableTr extends Component {
         </td>
         <td rowSpan="0">{doctor.name}</td>
         <td>{doctor.name}</td>
-        <td></td>
-        <td></td>
+        <td>{doctor.sub}</td>
+        <td>{doctor.title}</td>
         <td>{doctor.mobile}</td>
         <td className="center aligned">
           未发送 (<a href="#">发送</a>)
