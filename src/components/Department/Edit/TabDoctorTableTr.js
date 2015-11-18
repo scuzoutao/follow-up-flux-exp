@@ -7,6 +7,10 @@ import React, { Component } from 'react';
 
 export default class TabDoctorTableTr extends Component {
 
+  componentDidMount() {
+    $('.ui.checkbox').checkbox();
+  }
+
   render() {
 
     const { doctor } = this.props;
@@ -24,7 +28,7 @@ export default class TabDoctorTableTr extends Component {
         <td>{doctor.title}</td>
         <td>{doctor.mobile}</td>
         <td className="center aligned">
-          未发送 (<a href="#">发送</a>)
+          {doctor.status}
         </td>
       </tr>
     )

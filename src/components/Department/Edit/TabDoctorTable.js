@@ -14,10 +14,6 @@ function onAddNew() {
 
 export default class TabDoctorTable extends Component {
 
-  componentDidMount() {
-    $('.ui.checkbox').checkbox();
-  }
-
   render() {
 
     const { doctors } = this.props;
