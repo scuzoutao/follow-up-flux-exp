@@ -12,6 +12,7 @@ import DepartmentStore from './DepartmentStore';
 const _doctors = [];
 
 const DoctorStore = createStore({
+
   get() {
     return _doctors;
   }
@@ -19,12 +20,18 @@ const DoctorStore = createStore({
 
 DoctorStore.dispatchToken = register(action => {
   waitFor([DepartmentStore.dispatchToken]);
-  if (action.type == 'REQUEST_DOCTOR_SUCCESS') {
-    const responseDoctors = action.response;
-    if (responseDoctors) {
-      assign(_doctors, responseDoctors);
+  switch(action.type) {
+    case 'REQUEST_DOCTOR_SUCCESS':
+      const responseDoctors = action.response;
+      if (responseDoctors) {
+        assign(_doctors, responseDoctors);
+        DoctorStore.emitChange();
+      }
+      break;
+    case 'ADD_NEW_DOCTOR':
+      _doctors.push({id: _doctors[_doctors.length-1].id+1});
       DoctorStore.emitChange();
-    }
+      break;
   }
 });
 

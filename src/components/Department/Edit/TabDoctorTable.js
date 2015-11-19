@@ -5,18 +5,22 @@
 
 import React, { Component } from 'react';
 
+import * as DepartmentActionCreators from '../../../actions/Department/DepartmentActionCreators';
+
 import TabDoctorTableTr from './TabDoctorTableTr'
+import TabDoctorTableTrNew from './TabDoctorTableTrNew'
 import TabDoctorTableTfoot from './TabDoctorTableTfoot'
 
-function onAddNew() {
-
-}
-
 export default class TabDoctorTable extends Component {
+
+  _onAddNew() {
+    DepartmentActionCreators.addNewDoctor();
+  }
 
   render() {
 
     const { doctors } = this.props;
+    const leaders = [];
 
     return (
       <table className="ui small unstackable selectable celled striped definition table" id="doctors_table">
@@ -32,11 +36,17 @@ export default class TabDoctorTable extends Component {
           </tr>
         </thead>
         <tbody>
-          {doctors.map(function(doctor){
-            return <TabDoctorTableTr key={doctor.id} doctor={doctor}/>;
+          {doctors.map(function(member){
+            if (member.status){
+              if (member.count)
+                leaders.push(member)
+              return <TabDoctorTableTr key={member.id} doctor={member} />
+            }
+            else
+              return <TabDoctorTableTrNew key={member.id} leaders={leaders}/>
           })}
         </tbody>
-        <TabDoctorTableTfoot />
+        <TabDoctorTableTfoot onAddNew={this._onAddNew}/>
       </table>
     );
   }

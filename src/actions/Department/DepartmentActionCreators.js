@@ -3,7 +3,7 @@
  * (C) 2015 Mingdong Luo (https://github.com/mdluo) | MIT License
  */
 
-import { dispatchAsync } from '../../dispatcher/AppDispatcher';
+import { dispatch, dispatchAsync } from '../../dispatcher/AppDispatcher';
 import * as DepartmentAPI from '../../api/DepartmentAPI';
 import DepartmentStore from '../../stores/Department/DepartmentStore';
 import ActionTypes from '../../constants/ActionTypes';
@@ -22,4 +22,8 @@ export function requestDoctors(id) {
     success: ActionTypes.REQUEST_DOCTOR_SUCCESS,
     failure: ActionTypes.REQUEST_DOCTOR_ERROR
   }, { id });
+}
+
+export function addNewDoctor() {
+  dispatch(ActionTypes.ADD_NEW_DOCTOR);
 }

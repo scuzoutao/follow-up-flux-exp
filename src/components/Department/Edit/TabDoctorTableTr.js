@@ -14,6 +14,9 @@ export default class TabDoctorTableTr extends Component {
   render() {
 
     const { doctor } = this.props;
+    if (doctor.count) {
+      var leader = <td rowSpan={doctor.count+1}>{doctor.name}</td>
+    }
 
     return (
       <tr>
@@ -22,7 +25,7 @@ export default class TabDoctorTableTr extends Component {
             <input type="checkbox"/>
           </div>
         </td>
-        <td rowSpan="0">{doctor.name}</td>
+        {leader}
         <td>{doctor.name}</td>
         <td>{doctor.sub}</td>
         <td>{doctor.title}</td>
