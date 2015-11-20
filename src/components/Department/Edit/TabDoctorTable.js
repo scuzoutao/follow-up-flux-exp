@@ -13,10 +13,6 @@ import TabDoctorTableTfoot from './TabDoctorTableTfoot'
 
 export default class TabDoctorTable extends Component {
 
-  _onAddNew() {
-    DepartmentActionCreators.addNewDoctor();
-  }
-
   render() {
 
     const { doctors } = this.props;
@@ -37,17 +33,22 @@ export default class TabDoctorTable extends Component {
         </thead>
         <tbody>
           {doctors.map(function(member){
-            if (member.status){
+            if (member.status!='new'){
               if (member.count)
                 leaders.push(member)
               return <TabDoctorTableTr key={member.id} doctor={member} />
             }
             else
-              return <TabDoctorTableTrNew key={member.id} leaders={leaders}/>
+              return <TabDoctorTableTrNew key={member.id} leaders={leaders} doctor={member} />
           })}
         </tbody>
         <TabDoctorTableTfoot onAddNew={this._onAddNew}/>
       </table>
     );
   }
+
+  _onAddNew() {
+    DepartmentActionCreators.addNewDoctor();
+  }
+
 }

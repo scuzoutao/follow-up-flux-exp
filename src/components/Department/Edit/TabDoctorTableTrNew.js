@@ -13,14 +13,14 @@ export default class TabDoctorTableTrNew extends Component {
 
   render() {
 
-    const { leaders } = this.props;
+    const { leaders, doctor } = this.props;
 
     return (
       <tr className="positive">
         <td></td>
         <td className="five width">
           <select className="ui search tiny fluid">
-            <option>小组</option>
+            <option value="">小组</option>
             <option value="0">*新组长</option>
             {leaders.map(function(leader){
               return <option key={leader.id} value={leader.id}>{leader.name}</option>

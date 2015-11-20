@@ -11,7 +11,7 @@ export default class HeadRight extends Component {
   render() {
     return (
       <div className="float-right column">
-        <div className="ui primary small button">
+        <div className="ui primary small button" onClick={this.props.onSave}>
           <i className="save icon"></i>
           保存
         </div>

@@ -17,6 +17,20 @@ export default class TabDoctorTableTr extends Component {
     if (doctor.count) {
       var leader = <td rowSpan={doctor.count+1}>{doctor.name}</td>
     }
+    var status = '';
+    switch (doctor.status) {
+      case 'unconfirmed':
+        status = '未确认';
+        break;
+      case 'pending':
+        status = '未发送';
+        break;
+      case 'confirmed':
+        status = '已确认';
+        break;
+      default:
+        status = '未知';
+    }
 
     return (
       <tr>
@@ -31,7 +45,7 @@ export default class TabDoctorTableTr extends Component {
         <td>{doctor.title}</td>
         <td>{doctor.mobile}</td>
         <td className="center aligned">
-          {doctor.status}
+          {status}
         </td>
       </tr>
     )

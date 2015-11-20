@@ -29,7 +29,7 @@ DoctorStore.dispatchToken = register(action => {
       }
       break;
     case 'ADD_NEW_DOCTOR':
-      _doctors.push({id: _doctors[_doctors.length-1].id+1});
+      _doctors.push({id: _doctors[_doctors.length-1].id+1, status: 'new'});
       DoctorStore.emitChange();
       break;
   }

@@ -36,11 +36,12 @@ function getState(props) {
 export default class Edit extends Component {
 
   static propTypes = {
-    doctors: PropTypes.array
+    doctors: PropTypes.array,
   };
 
   static defaultProps = {
-    doctors: []
+    doctors: [],
+    onSave: this._onSave
   };
 
   componentWillMount() {
@@ -64,7 +65,7 @@ export default class Edit extends Component {
           <div className="wrap">
             <div className="ui page grid">
               <div className="sixteen wide column">
-                <Head {...this.props}/>
+                <Head {...this.props} onSave={this._onSave}/>
                 <Tab />
                 <TabBasic />
                 <TabDoctor {...this.props}/>
@@ -75,6 +76,11 @@ export default class Edit extends Component {
         </div>
       </DocumentTitle>
     );
+  }
+
+  _onSave() {
+    var tab = window.location.hash.substr(2)
+    console.log('onSave!!!!!!! '+tab);
   }
 
 }

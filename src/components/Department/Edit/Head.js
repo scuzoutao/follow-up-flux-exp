@@ -15,7 +15,7 @@ export default class Head extends Component {
     return (
       <div className="component head">
         <HeadLeft department={{name : '泌尿外科'}}/>
-        <HeadRight />
+        <HeadRight onSave={this.props.onSave}/>
         <div className="clear-both"></div>
       </div>
     );

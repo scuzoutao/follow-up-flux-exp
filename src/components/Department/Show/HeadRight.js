@@ -12,7 +12,7 @@ export default class HeadRight extends Component {
     const { department } = this.props;
     var url;
     if (department) {
-      url = "/departments/"+department.id+"/edit";
+      url = "/departments/"+department.id+"/edit/#/basic";
     } else {
       url = '';
     }
