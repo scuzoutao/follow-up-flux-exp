@@ -27,3 +27,11 @@ export function requestDoctors(id) {
 export function addNewDoctor() {
   dispatch(ActionTypes.ADD_NEW_DOCTOR);
 }
+
+export function saveNewDoctors(id, doctors) {
+  dispatchAsync(DepartmentAPI.saveDoctors(id, doctors), {
+    request: ActionTypes.SAVE_NEW_DOCTOR,
+    success: ActionTypes.SAVE_NEW_DOCTOR_SUCCESS,
+    failure: ActionTypes.SAVE_NEW_DOCTOR_ERROR
+  }, { id });
+}

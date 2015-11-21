@@ -14,8 +14,11 @@ export default class TabDoctorTableTr extends Component {
   render() {
 
     const { doctor } = this.props;
+    var leader;
     if (doctor.count) {
-      var leader = <td rowSpan={doctor.count+1}>{doctor.name}</td>
+      leader = <td rowSpan={doctor.count+1}>{doctor.name}</td>
+    } else if (doctor.count == 0) {
+      leader = <td>{doctor.name}</td>
     }
     var status = '';
     switch (doctor.status) {

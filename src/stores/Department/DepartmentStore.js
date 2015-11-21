@@ -3,13 +3,12 @@
  * (C) 2015 Mingdong Luo (https://github.com/mdluo) | MIT License
  */
 
-import assign from 'object-assign';
-import Immutable from 'immutable'
+import Immutable from 'immutable';
 
 import { register } from '../../dispatcher/AppDispatcher';
 import { createStore } from '../../utils/StoreUtils';
 
-var _department = Immutable.Map();
+let _department = Immutable.Map();
 
 const DepartmentStore = createStore({
   get() {

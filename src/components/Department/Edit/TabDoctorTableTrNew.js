@@ -3,7 +3,7 @@
  * (C) 2015 Mingdong Luo (https://github.com/mdluo) | MIT License
  */
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 export default class TabDoctorTableTrNew extends Component {
 
@@ -29,22 +29,22 @@ export default class TabDoctorTableTrNew extends Component {
         </td>
         <td>
           <div className="ui fluid tiny input">
-            <input placeholder="姓名" />
+            <input placeholder="姓名" value={doctor.name} data-field="name"/>
           </div>
         </td>
         <td>
           <div className="ui fluid tiny input">
-            <input placeholder="亚专业" />
+            <input placeholder="亚专业" value={doctor.sub} data-field="sub"/>
           </div>
         </td>
         <td>
           <div className="ui fluid tiny input">
-            <input placeholder="职称" />
+            <input placeholder="职称" value={doctor.title} data-field="title"/>
           </div>
         </td>
         <td>
           <div className="ui fluid tiny input">
-            <input placeholder="手机号" />
+            <input placeholder="手机号" value={doctor.mobile} data-field="mobile"/>
           </div>
         </td>
         <td className="center aligned">
@@ -53,4 +53,5 @@ export default class TabDoctorTableTrNew extends Component {
       </tr>
     )
   }
+
 }

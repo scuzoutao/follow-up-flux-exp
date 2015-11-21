@@ -28,8 +28,9 @@ function requestData(props) {
 
 function getState(props) {
   const id = parseId(props.params);
-  const doctors = DoctorStore.get();
-  return { doctors };
+  const doctors = DoctorStore.getDocotors();
+  const leaders = DoctorStore.getLeaders();
+  return { doctors, leaders };
 }
 
 @connectToStores([DoctorStore], getState)
@@ -41,6 +42,7 @@ export default class Edit extends Component {
 
   static defaultProps = {
     doctors: [],
+    leaders: [],
     onSave: this._onSave
   };
 
@@ -65,7 +67,7 @@ export default class Edit extends Component {
           <div className="wrap">
             <div className="ui page grid">
               <div className="sixteen wide column">
-                <Head {...this.props} onSave={this._onSave}/>
+                <Head {...this.props} onSave={this._onSave.bind(this)}/>
                 <Tab />
                 <TabBasic />
                 <TabDoctor {...this.props}/>
@@ -79,8 +81,29 @@ export default class Edit extends Component {
   }
 
   _onSave() {
+    var department_id = this.props.department.id;
     var tab = window.location.hash.substr(2)
-    console.log('onSave!!!!!!! '+tab);
+    if (tab == 'basic') {
+
+    } else if (tab == 'doctor') {
+      let new_doctors_array = [];
+      $('tr.positive').each((i, n) => {
+        let new_doctor = {
+          leader: parseInt($(n).find('select').val()),
+          department_id: department_id,
+          status: 'new'
+        };
+        $(n).find('input').each((j, k) => {
+          if ($(k).attr('data-field')) {
+            new_doctor[$(k).attr('data-field')] = k.value;
+          }
+        })
+        new_doctors_array.push(new_doctor);
+      })
+      if (new_doctors_array.length > 0) {
+        DepartmentActionCreators.saveNewDoctors(department_id, {id: department_id, users: new_doctors_array});
+      }
+    }
   }
 
 }

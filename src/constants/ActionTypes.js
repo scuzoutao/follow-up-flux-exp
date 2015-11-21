@@ -9,5 +9,9 @@ export default keyMirror({
   REQUEST_DOCTOR_SUCCESS: null,
   REQUEST_DOCTOR_ERROR: null,
 
-  ADD_NEW_DOCTOR: null
+  ADD_NEW_DOCTOR: null,
+
+  SAVE_NEW_DOCTOR: null,
+  SAVE_NEW_DOCTOR_SUCCESS: null,
+  SAVE_NEW_DOCTOR_ERROR: null
 });

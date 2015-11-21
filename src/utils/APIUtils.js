@@ -6,20 +6,33 @@
 import 'whatwg-fetch';
 
 const API_ROOT = 'http://127.0.0.1:3000';
-const HTTP_HEADERS = {
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  }
+const headers = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json'
 };
 
 export function fetchJSON(url) {
   if (url.indexOf(API_ROOT) === -1) {
     url = API_ROOT + url;
   }
-  return fetch(url, HTTP_HEADERS).then(response =>
+  return fetch(url, { headers }).then(response =>
     response.json().then(json => {
       return json;
+    })
+  );
+}
+
+export function postJSON(url, data) {
+  if (url.indexOf(API_ROOT) === -1) {
+    url = API_ROOT + url;
+  }
+  return fetch(url, {
+      method: 'post',
+      headers: headers,
+      body: JSON.stringify(data)
+    }).then(response =>
+      response.json().then(json => {
+        return json;
     })
   );
 }

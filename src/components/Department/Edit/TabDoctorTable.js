@@ -14,9 +14,7 @@ import TabDoctorTableTfoot from './TabDoctorTableTfoot'
 export default class TabDoctorTable extends Component {
 
   render() {
-
-    const { doctors } = this.props;
-    const leaders = [];
+    const { doctors, leaders } = this.props;
 
     return (
       <table className="ui small unstackable selectable celled striped definition table" id="doctors_table">
@@ -32,14 +30,12 @@ export default class TabDoctorTable extends Component {
           </tr>
         </thead>
         <tbody>
-          {doctors.map(function(member){
-            if (member.status!='new'){
-              if (member.count)
-                leaders.push(member)
+          {
+            doctors.map(function(member){
+            if (member.status!='new')
               return <TabDoctorTableTr key={member.id} doctor={member} />
-            }
             else
-              return <TabDoctorTableTrNew key={member.id} leaders={leaders} doctor={member} />
+              return <TabDoctorTableTrNew key={member.id} leaders={leaders} doctor={member}/>
           })}
         </tbody>
         <TabDoctorTableTfoot onAddNew={this._onAddNew}/>
