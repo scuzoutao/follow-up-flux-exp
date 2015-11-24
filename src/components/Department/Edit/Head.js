@@ -11,11 +11,10 @@ import HeadRight from './HeadRight'
 export default class Head extends Component {
 
   render() {
-
     return (
       <div className="component head">
         <HeadLeft department={{name : '泌尿外科'}}/>
-        <HeadRight onSave={this.props.onSave}/>
+        <HeadRight {...this.props}/>
         <div className="clear-both"></div>
       </div>
     );

@@ -23,7 +23,7 @@ export default class TabDoctorTableTrNew extends Component {
             <option value="">小组</option>
             <option value="0">*新组长</option>
             {leaders.map(function(leader){
-              return <option key={leader.id} value={leader.id}>{leader.name}</option>
+              return <option value={leader.id}>{leader.name}</option>
             })}
           </select>
         </td>

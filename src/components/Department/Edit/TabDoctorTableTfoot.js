@@ -16,10 +16,6 @@ export default class TabDoctorTableTfoot extends Component {
               <i className="remove icon"></i>
               移除选中
             </div>
-            <div className="ui small red basic button">
-              <i className="trash icon"></i>
-              移除全部
-            </div>
             <div className="ui right floated small green basic button" onClick={this.props.onAddNew}>
               <i className="chevron down icon"></i>
               新增一行

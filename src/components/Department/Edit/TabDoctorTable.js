@@ -32,11 +32,15 @@ export default class TabDoctorTable extends Component {
         <tbody>
           {
             doctors.map(function(member){
-            if (member.status!='new')
-              return <TabDoctorTableTr key={member.id} doctor={member} />
-            else
-              return <TabDoctorTableTrNew key={member.id} leaders={leaders} doctor={member}/>
-          })}
+              let doctor_tr;
+              if (member.status!='new') {
+                doctor_tr = <TabDoctorTableTr key={member.id} doctor={member} />
+              } else {
+                doctor_tr = <TabDoctorTableTrNew key={member.id} leaders={leaders} doctor={member} />
+              }
+              return doctor_tr;
+            })
+          }
         </tbody>
         <TabDoctorTableTfoot onAddNew={this._onAddNew}/>
       </table>

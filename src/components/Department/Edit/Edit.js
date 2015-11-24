@@ -37,14 +37,20 @@ function getState(props) {
 export default class Edit extends Component {
 
   static propTypes = {
-    doctors: PropTypes.array,
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired
+    }).isRequired
   };
 
   static defaultProps = {
     doctors: [],
     leaders: [],
-    onSave: this._onSave
   };
+
+  constructor(props) {
+    super(props);
+    this._onSave = this._onSave.bind(this);
+  }
 
   componentWillMount() {
     requestData(this.props);
@@ -67,7 +73,7 @@ export default class Edit extends Component {
           <div className="wrap">
             <div className="ui page grid">
               <div className="sixteen wide column">
-                <Head {...this.props} onSave={this._onSave.bind(this)}/>
+                <Head {...this.props} onSave={this._onSave}/>
                 <Tab />
                 <TabBasic />
                 <TabDoctor {...this.props}/>
