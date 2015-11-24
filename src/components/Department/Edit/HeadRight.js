@@ -13,17 +13,25 @@ export default class HeadRight extends Component {
   constructor(props) {
     super(props);
     this.state = {saving: true};
-    this._onSavingStarts = this._onSavingStarts.bind(this);
-    this._onSavingEnds = this._onSavingEnds.bind(this);
+    this._onSavingStarts = this._onSavingStarts.bind(this)
+    this._onSavingEnds = this._onSavingEnds.bind(this)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     DoctorStore.addEventListener('save', this._onSavingStarts);
     DoctorStore.addEventListener('error', this._onSavingEnds);
     DoctorStore.addChangeListener(this._onSavingEnds);
   }
 
+  componentWillUnmount() {
+    DoctorStore.removeEventListener('save', this._onSavingStarts);
+    DoctorStore.removeEventListener('error', this._onSavingEnds);
+    DoctorStore.removeChangeListener(this._onSavingEnds);
+  }
+
   render() {
+    let back_url = "/departments/" + this.props.department.id
+
     if (this.state.saving) {
       var save_button = (
         <div className="ui disabled small loading button">
@@ -47,7 +55,7 @@ export default class HeadRight extends Component {
           <i className="trash icon"></i>
           删除
         </div>
-        <Link className="ui small button" to="/departments/15">取消</Link>
+        <Link className="ui small button" to={back_url}>取消</Link>
       </div>
     );
   }
