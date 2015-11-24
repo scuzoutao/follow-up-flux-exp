@@ -25,7 +25,8 @@ module.exports = {
     loaders: [{
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        include: path.join(__dirname, 'src')
+        include: /src/,
+        exclude: /node_modules/
       }, {
         test: /\.css$/,
         loader: 'style-loader/useable!css-loader!postcss-loader',
@@ -41,7 +42,7 @@ module.exports = {
         loader: 'raw-loader',
       }, {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-        loader: 'url-loader?limit=10000',
+        loader: 'url-loader',
       }, {
         test: /\.(eot|ttf|wav|mp3)$/,
         loader: 'file-loader',
