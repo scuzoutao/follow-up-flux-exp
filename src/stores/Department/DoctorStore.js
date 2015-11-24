@@ -21,11 +21,7 @@ const DoctorStore = createStore({
     return _leaders.toJS();
   },
 
-  getNew() {
-    return _doctors.filter((item) => item.status=='new').toJS();
-  },
-
-  maxId() {
+  getMaxDocotorId() {
     var maxId = 0;
     _doctors.forEach((item) => {
       if(item.id >= maxId) {
@@ -39,6 +35,15 @@ const DoctorStore = createStore({
 DoctorStore.dispatchToken = register(action => {
   waitFor([DepartmentStore.dispatchToken]);
   switch(action.type) {
+
+    case 'SAVE_NEW_DOCTOR':
+      DoctorStore.emitEvent('save');
+      break;
+
+    case 'SAVE_NEW_DOCTOR_ERROR':
+      DoctorStore.emitEvent('error');
+      break;
+
     case 'REQUEST_DOCTOR_SUCCESS':
     case 'SAVE_NEW_DOCTOR_SUCCESS':
       const responseDoctors = action.response;
@@ -53,8 +58,9 @@ DoctorStore.dispatchToken = register(action => {
         DoctorStore.emitChange();
       }
       break;
+
     case 'ADD_NEW_DOCTOR':
-      _doctors = _doctors.push({id: DoctorStore.maxId()+1, status: 'new'});
+      _doctors = _doctors.push({id: DoctorStore.getMaxDocotorId()+1, status: 'new'});
       DoctorStore.emitChange();
       break;
   }

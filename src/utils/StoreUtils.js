@@ -5,7 +5,6 @@
 
 import { each, isFunction } from 'underscore';
 import { EventEmitter } from 'events';
-import shallowEqual from 'react-pure-render/shallowEqual';
 import assign from 'object-assign';
 
 const CHANGE_EVENT = 'change';
@@ -15,6 +14,18 @@ export function createStore(spec) {
   emitter.setMaxListeners(0);
 
   const store = assign({
+    emitEvent(event) {
+      emitter.emit(event);
+    },
+
+    addEventListener(event, callback) {
+      emitter.on(event, callback);
+    },
+
+    removeEventListener(event, callback) {
+      emitter.removeListener(event, callback);
+    },
+
     emitChange() {
       emitter.emit(CHANGE_EVENT);
     },
@@ -36,31 +47,4 @@ export function createStore(spec) {
   });
 
   return store;
-}
-
-export function isInBag(bag, id, fields) {
-  let item = bag[id];
-  if (!bag[id]) {
-    return false;
-  }
-
-  if (fields) {
-    return fields.every(field => item.hasOwnProperty(field));
-  } else {
-    return true;
-  }
-}
-
-export function mergeIntoBag(bag, entities) {
-  for (let id in entities) {
-    if (!entities.hasOwnProperty(id)) {
-      continue;
-    }
-
-    if (!bag.hasOwnProperty(id)) {
-      bag[id] = entities[id];
-    } else if (!shallowEqual(bag[id], entities[id])) {
-      bag[id] = assign({}, bag[id], entities[id]);
-    }
-  }
 }

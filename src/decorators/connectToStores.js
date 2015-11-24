@@ -22,7 +22,6 @@ export default function connectToStores(stores, getState) {
       constructor(props) {
         super(props);
         this.handleStoresChanged = this.handleStoresChanged.bind(this);
-
         this.state = getState(props);
       }
 
