@@ -36,10 +36,10 @@ export default class TabDoctorTableTr extends Component {
     }
 
     return (
-      <tr>
+      <tr className="data-tr">
         <td className="collapsing">
           <div className="ui fitted checkbox">
-            <input type="checkbox"/>
+            <input type="checkbox" data-id={doctor.id}/>
           </div>
         </td>
         {leader}

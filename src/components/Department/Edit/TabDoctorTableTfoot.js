@@ -12,7 +12,7 @@ export default class TabDoctorTableTfoot extends Component {
       <tfoot className="full-width">
         <tr>
           <th colSpan="8">
-            <div className="ui small red basic button">
+            <div className="ui small red basic button" onClick={this.props.onRemove}>
               <i className="remove icon"></i>
               移除选中
             </div>

@@ -13,6 +13,11 @@ import TabDoctorTableTfoot from './TabDoctorTableTfoot'
 
 export default class TabDoctorTable extends Component {
 
+  constructor(props) {
+    super(props);
+    this._onRemove = this._onRemove.bind(this);
+  }
+
   render() {
     const { doctors, leaders } = this.props;
 
@@ -42,13 +47,26 @@ export default class TabDoctorTable extends Component {
             })
           }
         </tbody>
-        <TabDoctorTableTfoot onAddNew={this._onAddNew}/>
+        <TabDoctorTableTfoot onAddNew={this._onAddNew} onRemove={this._onRemove}/>
       </table>
     );
   }
 
   _onAddNew() {
     DepartmentActionCreators.addNewDoctor();
+  }
+
+  _onRemove() {
+    let department_id = this.props.department.id;
+    let remove_doctors_array = [];
+    $('#doctors_table tr.data-tr').each((i, tr) => {
+      let checkbox = $(tr).find('.checkbox')
+      if(checkbox.attr('class').indexOf("checked") > -1) {
+        let checked_id = parseInt(checkbox.find('input').attr('data-id'));
+        remove_doctors_array.push(checked_id);
+      }
+    });
+    DepartmentActionCreators.removeDoctors(department_id, {id: department_id, users: remove_doctors_array});
   }
 
 }

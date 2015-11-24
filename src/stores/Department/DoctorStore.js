@@ -46,10 +46,11 @@ DoctorStore.dispatchToken = register(action => {
 
     case 'REQUEST_DOCTOR_SUCCESS':
     case 'SAVE_NEW_DOCTOR_SUCCESS':
+    case 'REMOVE_DOCTOR_SUCCESS':
       const responseDoctors = action.response;
       if (responseDoctors) {
-        _doctors = Immutable.List(responseDoctors);
-        _leaders.clear();
+        _doctors = Immutable.List(responseDoctors.data);
+        _leaders = _leaders.clear();
         _doctors.forEach((item) => {
           if (item.count >= 0) {
             _leaders = _leaders.push(item);

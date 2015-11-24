@@ -93,15 +93,15 @@ export default class Edit extends Component {
 
     } else if (tab == 'doctor') {
       let new_doctors_array = [];
-      $('tr.positive').each((i, n) => {
+      $('#doctors_table tr.positive').each((i, tr) => {
         let new_doctor = {
-          leader: parseInt($(n).find('select').val()),
+          leader: parseInt($(tr).find('select').val()),
           department_id: department_id,
           status: 'new'
         };
-        $(n).find('input').each((j, k) => {
-          if ($(k).attr('data-field')) {
-            new_doctor[$(k).attr('data-field')] = k.value;
+        $(tr).find('input').each((j, input) => {
+          if ($(input).attr('data-field')) {
+            new_doctor[$(input).attr('data-field')] = input.value;
           }
         })
         new_doctors_array.push(new_doctor);

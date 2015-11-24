@@ -11,23 +11,12 @@ const headers = {
   'Content-Type': 'application/json'
 };
 
-export function fetchJSON(url) {
-  if (url.indexOf(API_ROOT) === -1) {
-    url = API_ROOT + url;
-  }
-  return fetch(url, { headers }).then(response =>
-    response.json().then(json => {
-      return json;
-    })
-  );
-}
-
-export function postJSON(url, data) {
+export function fetchJSON(url, method='GET', data) {
   if (url.indexOf(API_ROOT) === -1) {
     url = API_ROOT + url;
   }
   return fetch(url, {
-      method: 'post',
+      method: method,
       headers: headers,
       body: JSON.stringify(data)
     }).then(response =>

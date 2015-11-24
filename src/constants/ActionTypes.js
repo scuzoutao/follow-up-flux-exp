@@ -13,5 +13,9 @@ export default keyMirror({
 
   SAVE_NEW_DOCTOR: null,
   SAVE_NEW_DOCTOR_SUCCESS: null,
-  SAVE_NEW_DOCTOR_ERROR: null
+  SAVE_NEW_DOCTOR_ERROR: null,
+
+  REMOVE_DOCTOR: null,
+  REMOVE_DOCTOR_SUCCESS: null,
+  REMOVE_DOCTOR_ERROR: null
 });

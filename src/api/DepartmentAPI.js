@@ -14,5 +14,9 @@ export function getDoctors(id, url = `/departments/${id}/users`) {
 }
 
 export function saveDoctors(id, data, url = `/departments/${id}/users`) {
-  return postJSON(url, data);
+  return fetchJSON(url, 'POST', data);
+}
+
+export function removeDoctors(id, data, url = `/departments/${id}/users`) {
+  return fetchJSON(url, 'DELETE', data);
 }

@@ -35,3 +35,11 @@ export function saveNewDoctors(id, doctors) {
     failure: ActionTypes.SAVE_NEW_DOCTOR_ERROR
   }, { id });
 }
+
+export function removeDoctors(id, doctors) {
+  dispatchAsync(DepartmentAPI.removeDoctors(id, doctors), {
+    request: ActionTypes.REMOVE_DOCTOR,
+    success: ActionTypes.REMOVE_DOCTOR_SUCCESS,
+    failure: ActionTypes.REMOVE_DOCTOR_ERROR
+  }, { id });
+}
