@@ -4,8 +4,9 @@
  */
 
 .component.message {
-  position: absolute;
+  position: fixed;
   left: 50%;
+  top: 80px;
   z-index: 1000;
 
   .ui.warning.message {
