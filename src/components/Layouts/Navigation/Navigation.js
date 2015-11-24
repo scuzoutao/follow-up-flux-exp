@@ -5,12 +5,15 @@
 
 import React, { Component } from 'react';
 
+import Message from './Message'
+
 class Navigation extends Component {
 
   render() {
     return (
       <div className="wrap">
         <div className="ui page grid">
+          <Message />
           <div className="sixteen wide column">
             <div className="ui large breadcrumb">
               <a className="section" href="/">首页</a>
